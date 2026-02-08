@@ -1,0 +1,9 @@
+[package]
+name = "ftn-graph-analytics"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
