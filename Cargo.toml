@@ -9,6 +9,9 @@ anyhow = "1"
 clap = { version = "4", features = ["derive"] }
 rand = { version = "0.8", features = ["std"] }
 
+[dev-dependencies]
+tempfile = "3"
+
 [[bin]]
 name = "gen"
 path = "src/bin/gen.rs"
