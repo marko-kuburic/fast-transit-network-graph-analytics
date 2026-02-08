@@ -4,7 +4,7 @@ use anyhow::Result;
 use clap::{Parser, Subcommand, ValueEnum};
 
 #[derive(Parser, Debug)]
-#[command(name = "ftn-graph-analytics")]
+#[command(name = "fast-transit-network-analytics")]
 #[command(about = "Graph analytics on large edge lists", long_about = None)]
 struct Cli {
     #[command(subcommand)]

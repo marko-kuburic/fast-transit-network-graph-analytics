@@ -7,7 +7,7 @@ use clap::{Parser, ValueEnum};
 use rand::rngs::StdRng;
 use rand::SeedableRng;
 
-use ftn_graph_analytics::generator::er::generate_erdos_renyi;
+use fast_transit_network_analytics::generator::er::generate_erdos_renyi;
 
 #[derive(Parser, Debug)]
 #[command(name = "gen")]

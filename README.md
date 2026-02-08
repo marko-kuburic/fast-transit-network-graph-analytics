@@ -1,4 +1,4 @@
-# ftn-graph-analytics
+# fast-transit-network-analytics
 
 This project provides a Rust CLI scaffold for large-scale graph analytics. Algorithms and data structures are implemented in subsequent commits.
 
