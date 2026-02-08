@@ -7,3 +7,8 @@ rust-version = "1.75"
 [dependencies]
 anyhow = "1"
 clap = { version = "4", features = ["derive"] }
+rand = { version = "0.8", features = ["std"] }
+
+[[bin]]
+name = "gen"
+path = "src/bin/gen.rs"
