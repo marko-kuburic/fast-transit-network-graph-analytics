@@ -11,6 +11,7 @@ rand = { version = "0.8", features = ["std"] }
 rayon = "1"
 
 [dev-dependencies]
+assert_cmd = "2"
 tempfile = "3"
 
 [[bin]]
