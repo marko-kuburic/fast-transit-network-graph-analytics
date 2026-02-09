@@ -279,4 +279,16 @@ mod tests {
         assert_eq!(g.offsets, vec![0, 1, 2]);
         assert_eq!(g.edges, vec![1, 0]);
     }
+
+    #[test]
+    fn csr_from_bench_file() {
+        let path = std::path::Path::new("bench/sample_small.txt");
+        let g = CsrGraph::from_edge_list(path, false, true).unwrap();
+        assert_eq!(g.n, 5);
+        assert_eq!(g.m, 6);
+        let path = std::path::Path::new("bench/sample_big.txt");
+        let g = CsrGraph::from_edge_list(path, false, true).unwrap();
+        assert_eq!(g.n, 10);
+        assert_eq!(g.m, 20);
+    }
 }
