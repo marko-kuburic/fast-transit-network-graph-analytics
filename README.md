@@ -1,6 +1,6 @@
 # fast-transit-network-analytics
 
-This project provides a Rust CLI scaffold for large-scale graph analytics, with a CSR graph representation and BFS/WCC implementations (sequential and parallel).
+This project provides a Rust CLI scaffold for large-scale graph analytics, with a CSR graph representation and BFS/WCC/PageRank implementations (sequential and parallel).
 
 ## Requirements
 
@@ -44,6 +44,20 @@ Parallel WCC:
 
 ```
 cargo run --release -- wcc --input data.txt --mode par
+```
+
+### PageRank
+
+Sequential PageRank:
+
+```
+cargo run --release -- pagerank --input data.txt --mode seq
+```
+
+Parallel PageRank:
+
+```
+cargo run --release -- pagerank --input data.txt --mode par
 ```
 
 ## Datasets
