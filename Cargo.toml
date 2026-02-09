@@ -8,6 +8,7 @@ rust-version = "1.75"
 anyhow = "1"
 clap = { version = "4", features = ["derive"] }
 rand = { version = "0.8", features = ["std"] }
+rayon = "1"
 
 [dev-dependencies]
 tempfile = "3"
