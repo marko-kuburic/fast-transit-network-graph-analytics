@@ -1,6 +1,6 @@
 # fast-transit-network-analytics
 
-This project provides a Rust CLI scaffold for large-scale graph analytics, with a CSR graph representation and BFS implementations (sequential and parallel).
+This project provides a Rust CLI scaffold for large-scale graph analytics, with a CSR graph representation and BFS/WCC implementations (sequential and parallel).
 
 ## Requirements
 
@@ -30,6 +30,20 @@ Parallel BFS:
 
 ```
 cargo run --release -- bfs --input data.txt --source 0 --mode par
+```
+
+### WCC
+
+Sequential WCC:
+
+```
+cargo run --release -- wcc --input data.txt --mode seq
+```
+
+Parallel WCC:
+
+```
+cargo run --release -- wcc --input data.txt --mode par
 ```
 
 ## Datasets
