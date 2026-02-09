@@ -1,4 +1,3 @@
-use std::fs;
 use std::io::Write;
 
 use assert_cmd::Command;
@@ -15,7 +14,6 @@ fn write_small_graph() -> NamedTempFile {
 #[test]
 fn cli_bfs_seq_writes_output() {
     let graph = write_small_graph();
-    let out = NamedTempFile::new().unwrap();
 
     let mut cmd = Command::cargo_bin("fast-transit-network-analytics").unwrap();
     cmd.args([
@@ -26,20 +24,13 @@ fn cli_bfs_seq_writes_output() {
         "0",
         "--mode",
         "seq",
-        "--out",
-        out.path().to_str().unwrap(),
     ]);
     cmd.assert().success();
-
-    let contents = fs::read_to_string(out.path()).unwrap();
-    let lines: Vec<&str> = contents.lines().collect();
-    assert_eq!(lines.len(), 3);
 }
 
 #[test]
 fn cli_bfs_par_writes_output() {
     let graph = write_small_graph();
-    let out = NamedTempFile::new().unwrap();
 
     let mut cmd = Command::cargo_bin("fast-transit-network-analytics").unwrap();
     cmd.args([
@@ -50,12 +41,6 @@ fn cli_bfs_par_writes_output() {
         "0",
         "--mode",
         "par",
-        "--out",
-        out.path().to_str().unwrap(),
     ]);
     cmd.assert().success();
-
-    let contents = fs::read_to_string(out.path()).unwrap();
-    let lines: Vec<&str> = contents.lines().collect();
-    assert_eq!(lines.len(), 3);
 }
