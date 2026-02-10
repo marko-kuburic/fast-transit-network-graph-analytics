@@ -1,3 +1,6 @@
+// Марко Кубурић
+// E2 62/2025
+
 use std::fmt::Display;
 use std::fs::File;
 use std::io::{BufWriter, Write};
