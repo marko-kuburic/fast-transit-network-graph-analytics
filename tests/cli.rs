@@ -15,6 +15,7 @@ fn write_small_graph() -> NamedTempFile {
 #[test]
 fn cli_bfs_seq_writes_output() {
     let graph = write_small_graph();
+    let out = NamedTempFile::new().unwrap();
 
     let mut cmd = Command::cargo_bin("fast-transit-network-analytics").unwrap();
     cmd.args([
@@ -25,6 +26,8 @@ fn cli_bfs_seq_writes_output() {
         "0",
         "--mode",
         "seq",
+        "--out",
+        out.path().to_str().unwrap(),
     ]);
     cmd.assert().success();
 }
@@ -32,6 +35,7 @@ fn cli_bfs_seq_writes_output() {
 #[test]
 fn cli_wcc_seq_runs() {
     let graph = write_small_graph();
+    let out = NamedTempFile::new().unwrap();
 
     let mut cmd = Command::cargo_bin("fast-transit-network-analytics").unwrap();
     cmd.args([
@@ -40,6 +44,8 @@ fn cli_wcc_seq_runs() {
         graph.path().to_str().unwrap(),
         "--mode",
         "seq",
+        "--out",
+        out.path().to_str().unwrap(),
     ]);
     cmd.assert().success();
 }
@@ -47,6 +53,7 @@ fn cli_wcc_seq_runs() {
 #[test]
 fn cli_wcc_par_runs() {
     let graph = write_small_graph();
+    let out = NamedTempFile::new().unwrap();
 
     let mut cmd = Command::cargo_bin("fast-transit-network-analytics").unwrap();
     cmd.args([
@@ -55,6 +62,10 @@ fn cli_wcc_par_runs() {
         graph.path().to_str().unwrap(),
         "--mode",
         "par",
+        "--threads",
+        "2",
+        "--out",
+        out.path().to_str().unwrap(),
     ]);
     cmd.assert().success();
 }
@@ -62,6 +73,7 @@ fn cli_wcc_par_runs() {
 #[test]
 fn cli_bfs_par_writes_output() {
     let graph = write_small_graph();
+    let out = NamedTempFile::new().unwrap();
 
     let mut cmd = Command::cargo_bin("fast-transit-network-analytics").unwrap();
     cmd.args([
@@ -72,6 +84,10 @@ fn cli_bfs_par_writes_output() {
         "0",
         "--mode",
         "par",
+        "--threads",
+        "2",
+        "--out",
+        out.path().to_str().unwrap(),
     ]);
     cmd.assert().success();
 }
@@ -79,6 +95,7 @@ fn cli_bfs_par_writes_output() {
 #[test]
 fn cli_pagerank_seq_runs() {
     let graph = write_small_graph();
+    let out = NamedTempFile::new().unwrap();
 
     let mut cmd = Command::cargo_bin("fast-transit-network-analytics").unwrap();
     cmd.args([
@@ -87,6 +104,14 @@ fn cli_pagerank_seq_runs() {
         graph.path().to_str().unwrap(),
         "--mode",
         "seq",
+        "--out",
+        out.path().to_str().unwrap(),
+        "--alpha",
+        "0.85",
+        "--iters",
+        "10",
+        "--eps",
+        "1e-8",
     ]);
     cmd.assert().success();
 }
@@ -94,6 +119,7 @@ fn cli_pagerank_seq_runs() {
 #[test]
 fn cli_pagerank_par_runs() {
     let graph = write_small_graph();
+    let out = NamedTempFile::new().unwrap();
 
     let mut cmd = Command::cargo_bin("fast-transit-network-analytics").unwrap();
     cmd.args([
@@ -102,6 +128,16 @@ fn cli_pagerank_par_runs() {
         graph.path().to_str().unwrap(),
         "--mode",
         "par",
+        "--threads",
+        "2",
+        "--out",
+        out.path().to_str().unwrap(),
+        "--alpha",
+        "0.85",
+        "--iters",
+        "10",
+        "--eps",
+        "1e-8",
     ]);
     cmd.assert().success();
 }
